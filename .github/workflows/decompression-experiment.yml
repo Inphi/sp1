@@ -1,0 +1,26 @@
+name: Decompression experiment
+
+on:
+  push:
+    branches: [dev-compression-precompile]
+    paths:
+      - "experiments/decompression/**"
+      - ".github/workflows/decompression-experiment.yml"
+  pull_request:
+    paths:
+      - "experiments/decompression/**"
+      - ".github/workflows/decompression-experiment.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  core:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@1.88.0
+      - name: Test core
+        run: cargo test --manifest-path experiments/decompression/Cargo.toml -p sp1-decompression-core
+      - name: Check no-std core
+        run: cargo check --manifest-path experiments/decompression/Cargo.toml -p sp1-decompression-core --no-default-features

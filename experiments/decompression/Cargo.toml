@@ -1,0 +1,16 @@
+[workspace]
+members = ["core", "program", "script"]
+resolver = "2"
+
+[workspace.package]
+edition = "2021"
+publish = false
+
+[workspace.dependencies]
+sp1-decompression-core = { path = "core", default-features = false }
+sp1-build = { path = "../../crates/build" }
+sp1-sdk = { path = "../../crates/sdk" }
+sp1-zkvm = { path = "../../crates/zkvm/entrypoint", features = ["lib"] }
+tokio = { version = "1.4", features = ["full"] }
+miniz_oxide = "0.8"
+brotli = "8"

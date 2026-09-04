@@ -1,0 +1,11 @@
+[package]
+name = "sp1-decompression-core"
+version = "0.1.0"
+edition = "2021"
+publish = false
+
+[features]
+default = ["std"]
+std = []
+
+[dependencies]
